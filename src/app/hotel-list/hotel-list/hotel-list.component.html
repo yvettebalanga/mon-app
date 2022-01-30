@@ -1,0 +1,50 @@
+
+<div class="container">
+    <h2 *ngIf="hotels && hotels.length > 0">{{ title }}</h2>
+
+    <button class="btn btn-primary" (clic)="toggleIsNewBadge()"> 
+        <span>
+            {{ showBadge ? 'visibility_off' : 'visibility'}}
+        </span>
+       {{ showBadge ? 'cacher' : 'afficher'}}  nouveau
+    </button>
+    <div class="row row-cols-1 row-cols-md-3">
+        <div class="col-mb-4" *ngFor="let hotel of hotels">
+            <div class="card">
+                <img 
+                [src]="hotel.imageUrl" 
+                [title]="hotel.hotelName" class="card-img-top" 
+                [alt]="hotel.hotelName">
+                <div class="card-body">
+                    <h5 class="card-title">{{ hotel.hotelName }}</h5>
+                    <p class="card-text">
+                        {{ hotel.description }}
+                    </p>
+                    
+                   <span class="badge badge-pill badge-info" *ngIf="showBadge">Nouveau</span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- <div class="container">
+    <h2 *ngIf="hotels && hotels.length > 0">{{ title }}</h2>
+    <div class="row row-cols-1 row-cols-md-3">
+        <div class="col-mb-4" *ngFor="let hotel of hotels">
+            <div>
+                <img src="{{ hotel.imageUrl }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{hotel.hotelName}}</h5>
+                    <p class="card-text">
+                        {{hotel.description }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
