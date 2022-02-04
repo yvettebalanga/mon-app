@@ -7,11 +7,18 @@ registerLocaleData(localFr, 'fr');
 
 import { AppComponent } from './app.component';
 import { HotelListComponent } from './hotel-list/hotel-list/hotel-list.component';
+import { ReplaceComma } from './shared/pipes/replace-comma.pipe';
+import { StarRatingComponent } from './shared/components/star-rating/star-rating.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HotelListComponent,
+    ReplaceComma,
+    StarRatingComponent,
+    
     
   ],
   imports: [
