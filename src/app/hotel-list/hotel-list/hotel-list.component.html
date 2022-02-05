@@ -25,6 +25,10 @@
         </div>
 
     </div>
+    <div class="alert alert-primary" *ngIf="receivedRating">
+        {{ receivedRating }}
+
+    </div>
     <div class="row row-cols-1 row-cols-md-3">
         <div class="col-mb-4" *ngFor="let hotel of filteredHotels">
             <div class="card">
@@ -44,7 +48,8 @@
                     </p>
                     
 
-                    <app-star-rating></app-star-rating>
+                    <app-star-rating [rating]="hotel.rating"
+                    (starRatingClicked)= "receiveRatingClicked($event)"></app-star-rating>
                    <span class="badge badge-pill badge-info" *ngIf="showBadge">Nouveau</span>
 
                 </div>
