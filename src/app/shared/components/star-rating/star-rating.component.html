@@ -1,7 +1,8 @@
 
 
 
-<div class="star-container">
+<div class="star-container" [style.width.px]="starWidth"
+[title]="rating" (clic)="sendRating()">
 
     <div class="star-wrapper">
         <span class="material-icons">star_rate</span>
