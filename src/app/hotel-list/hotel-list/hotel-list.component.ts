@@ -12,11 +12,18 @@ export class HotelListComponent implements OnInit {
   constructor(private hotelListService: HotelListService) { }
 
   ngOnInit(): void {
-    this.hotels = this.hotelListService.getHotels();
-    this.filteredHotels = this.hotels;
+    
+   this.hotelListService.getHotels().subscribe({
+      next: hotels => {
+        this.hotels = hotels;
+        this.filteredHotels = this.hotels;
+      },
+      error: err => this.errorMsg = err
+    });
+  
     this.hotelFilter = '';
   }
-  
+
   public title = 'Liste hotel';
 
   public hotels: IHotel[] = [];
@@ -26,6 +33,7 @@ export class HotelListComponent implements OnInit {
 
   private _hotelFilter = 'mot';
   public receivedRating!: string;
+  public errorMsg!: string;
 
   // public hotelFilter = 'mot';
 
