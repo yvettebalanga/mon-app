@@ -9,7 +9,10 @@ import { AppComponent } from './app.component';
 import { HotelListComponent } from './hotel-list/hotel-list/hotel-list.component';
 import { ReplaceComma } from './shared/pipes/replace-comma.pipe';
 import { StarRatingComponent } from './shared/components/star-rating/star-rating.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
+import { HotelDetailComponent } from './hotel-list/hotel-detail/hotel-detail.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -18,12 +21,23 @@ import { StarRatingComponent } from './shared/components/star-rating/star-rating
     HotelListComponent,
     ReplaceComma,
     StarRatingComponent,
+    HomeComponent,
+    HotelDetailComponent,
     
     
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    RouterModule.forRoot([
+      { path: 'home', component: HomeComponent},
+      { path: '', redirectTo: 'home', pathMatch: 'full'},
+      { path: 'hotels/:id', component: HotelDetailComponent},
+      { path: 'hotels', component: HotelListComponent },
+      { path: '**', redirectTo: 'home', pathMatch: 'full'}
+    ])
+
   ],
   providers: [],
   bootstrap: [AppComponent]
