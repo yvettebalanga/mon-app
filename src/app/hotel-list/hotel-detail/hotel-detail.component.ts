@@ -10,16 +10,16 @@ import { HotelListService } from '../hotel-list/hotel-list.service';
 })
 export class HotelDetailComponent implements OnInit {
 
-  public hotel : IHotel = <IHotel>{};
+  public hotel : IHotel | undefined = <IHotel>{};
   constructor( private route: ActivatedRoute, private hotelService: HotelListService) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-
-    this.hotelService.getHotels().subscribe((hotels: IHotel[]) => {
-      // this.hotel =  hotels.find((hotel: IHotel) => hotel.hotelId = id);
-    })
-
+    if(id) {
+      this.hotelService.getHotels().subscribe((hotels: IHotel[]) => {
+        this.hotel =  hotels.find((hotel: IHotel) => hotel.hotelId === +id);
+      })
+    }
 
     console.log(' id: ',id);
   
