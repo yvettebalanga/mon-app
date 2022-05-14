@@ -40,14 +40,16 @@
                     </p>
                     <p class="card-text">
 
-                        {{ hotel.price | currency: "EUR": "symbol": "1.2-2": "fr" }}
-                        <!--| replaceComma-->
+                        {{ hotel.price | currency: "EUR": "symbol": "1.2-2": "fr" | replaceComma }}
                     </p>
 
 
                     <div class="d-flex justify-content-between align-items-baseline">
-                        <app-star-rating [rating]="hotel.rating" (starRatingClicked)="receiveRatingClicked($event)">
-                        </app-star-rating>
+                        <!-- <app-star-rating [rating]="hotel.rating" (starRatingClicked)="receiveRatingClicked($event)">
+                        </app-star-rating> -->
+
+                        <app-star-rating [rating]="hotel.rating"(starRatingClicked)="receiveRatingClick($event)"
+                      ></app-star-rating>
 
                         <span class="material-icons bg-info text-white p-2 rounded-circle btn"
                             [routerLink]="['/hotels', hotel.hotelId]"> <!--sert pour avoir le lien pour chaque hotel-->
