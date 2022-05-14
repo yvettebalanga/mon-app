@@ -52,7 +52,7 @@ export class HotelListComponent implements OnInit {
 
     this.filteredHotels = this.hotelFilter ? this.filterHotels(this.hotelFilter) : this.hotels;
   }
-  receiveRatingClicked(messsage: string): void {
+  receiveRatingClick(messsage: string): void {
     this.receivedRating = messsage;
   }
 
